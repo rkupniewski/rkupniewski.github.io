@@ -76,7 +76,7 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="page-heading">
-                        <h1>O mnie</h1>
+                        <h2>O mnie</h2>
                         <hr class="small">
                         <span class="subheading">Chociaz nie ma o czym.</span>
                     </div>
@@ -89,51 +89,29 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <p>Dlaczego ja to robię ?? </p>
-                <p> I tak nie rozumiem.... </p>
-                <p> ---||--- </p>
+                <p>Moja meta.... </p>
+
+
             </div>
         </div>
     </div>
 
     <hr>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <ul class="list-inline text-center">
-                        <li>
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
-                    <p class="copyright text-muted">Blog z szablonu</p>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+    <div id="map" class="map" style="height: 500px">
+	   <script>
+      // create a map in the "map" div, set the view to a given place and zoom 54.359931, 18.270445
+      var map = L.map('map').setView([54.359931, 18.270445], 16);
+      // add an OpenStreetMap tile layer
+      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
+      // add a marker in the given location, attach some popup content to it and open the popup
+      L.marker([54.359931, 18.270445]).addTo(map).bindPopup('Tu pije piwo').openPopup();
+	   </script>
+
+
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
