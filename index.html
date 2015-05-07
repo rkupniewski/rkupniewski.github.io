@@ -9,11 +9,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Blog</title>
+    <title>Stronka</title>
+
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
+    <link rel="import" href="polymer-ui-carousel.html">
     <!-- Custom CSS -->
     <link href="css/clean-blog.min.css" rel="stylesheet">
 
@@ -33,6 +34,7 @@
 
 <body>
 
+   <script src="/bower_components/webcomponentsjs/webcomponents.js"></script>
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container-fluid">
@@ -54,11 +56,15 @@
                         <a href="index.html">Home</a>
                     </li>
                     <li>
-                        <a href="about.html">O...</a>
+                        <a href="about.html">Notacje</a>
                     </li>
                     <li>
-                        <a href="post.html">Post</a>
+                        <a href="post.html">Polymer</a>
                     </li>
+                    <li>
+                        <a href="dodatki/instrukcja1.asc">ASC</a>
+                    </li>
+
                     <!--li>
                         <a href="contact.html">Kontakt</a>
                     </li-->
@@ -76,9 +82,9 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="site-heading">
-                        <h1>Blog</h1>
+                        <h1>Moja Stronka</h1>
                         <!--hr class="small"-->
-                        <span class="subheading">Którego nie lubie</span>
+                        <span class="subheading">By Bootstrap</span>
                     </div>
                 </div>
             </div>
@@ -90,37 +96,53 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-preview">
-                    <a href="post.html">
+
                         <h2 class="post-title">
-                            Wczoraj robilem laborki z sieci
+                            Statek jak widac powyżej
                         </h2>
                         <h3 class="post-subtitle">
-                            Nawet ciekawe, a Zebra udaje ruter Cisco
+                            Ma 11 pokładów. Praca na nim to nieustanna walka z korozją i zużyciem materiałów.
                         </h3>
-                    </a>
-                    <p class="post-meta">Posted by <a href="#">Rafal</a> Marzec 25, 2015</p>
+
+
+
+
                 </div>
                 <hr>
                 <div class="post-preview">
-                    <a href="post.html">
-                        <h2 class="post-title">
-                            Dzisiaj próbuje pojąć o co chodzi z blogiem
-                        </h2>
-                        <h3 class="post-subtitle">
-                            Nawet ciekawe, ale przydałby sie formularz który uzupełnia posty
-                        </h3>
-                        <p class="post-meta" Notacja Markdown  /p>
-                        <a href="https://github.com/rkupniewski/Tech_I/blob/master/instrukcja1.md">Notacja Markdown</a>
-                        <p class="post-meta" Notacja AsciiDoc  /p>
-                        <a href="https://github.com/rkupniewski/Tech_I/blob/master/instrukcja1.asc">Notacja AsciiDoc</a>
-                        <p class="post-meta" Program TV  /p>
-                        <a href="program/program.html">Program TV</a>
-                    </a>
-                    <p class="post-meta">Posted by <a href="#">Rafal</a> 25 Marzec 2015</p>
-                </div>
+
+                        <h4 class="post-title">
+                            Pracuje sie na nim w systemie 12/12
+                        </h4>
+                        <h4 class="post-subtitle">
+                            Czyli pracujesz 12h codziennie bez dni wolnych i niedziel
+
+                        </h4>
+                      </div>
+
+
+                      <div>
+
+
+                        <h4 class="Mapka">
+                           MAPKA
+                        </h4>
+
+                      </div>
+
+                      <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+                      <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+                      <div id="map" class="map" style="height: 500px">
+                       <script>
+                        // create a map in the "map" div, set the view to a given place and zoom 54.359931, 18.270445
+                        var map = L.map('map').setView([54.359931, 18.270445], 16);
+                        // add an OpenStreetMap tile layer
+                        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
+                        // add a marker in the given location, attach some popup content to it and open the popup
+                        L.marker([54.359931, 18.270445]).addTo(map).bindPopup('Tu mieszkam').openPopup();
+                       </script>
+
                 <hr>
-
-
                 <!-- Pager -->
                 <ul class="pager">
                     <li class="next">
@@ -141,7 +163,16 @@
     <script src="js/bootstrap.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
+    <script src="webcomponents.js"></script>
     <script src="js/clean-blog.min.js"></script>
+
+    <script>
+      window.addEventListener('HTMLImportsLoaded', function() {
+        var link = document.querySelector('link[rel=import]');
+        var content = link.import.querySelector('#blog-post');
+        document.body.appendChild(document.importNode(content, true));
+      });
+    </script>
 
 </body>
 

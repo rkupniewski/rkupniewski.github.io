@@ -14,6 +14,20 @@ if (Meteor.isClient) {
       Session.set('counter', Session.get('counter') + 1);
     }
   });
+
+  Template.czesc.helpers({
+    counter2: function () {
+      return Session.get('counter2');
+    }
+  });
+
+  Template.czesc.events({
+    'click button': function () {
+      // increment the counter when button is clicked
+      Session.set('counter2', Session.get('counter2') + 2);
+    }
+  });
+
 }
 
 if (Meteor.isServer) {
