@@ -1,0 +1,103 @@
+<head>
+
+  <title>BESTchat</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <style type="text/css">
+    #chat-message {
+      width: 99%;
+      height: 50%;
+    }
+
+    #messages {
+      width: 100%;
+      height: 150px;
+      border: 1px solid rgb(230, 230, 230);
+    overflow: auto;
+  }
+  </style>
+</head>
+
+<body>
+	
+  {{> mainBox}}
+</body>
+	<!-- Main Chat Window -->
+<template name='mainBox'>
+  <div class='container'>
+    <h2>BESTchat</h2>
+    <!-- shows login buttons -->
+    
+{{> loginButtons}}
+
+  {{> chatBox}}
+  </div>
+</template>
+
+<!-- Chat Box with chat messages and the input box -->
+<template name='chatBox'>
+  <div id='messages'>
+    {{#each messages}}
+      {{>chatMessage}}
+    {{/each}}
+  </div>
+     
+  <textarea id='chat-message' onkeyup="process(event, this)" placeholder="Wpisz Wiadomość"></textarea><br>
+  <button class='btn btn-warning' id='send'>Dodaj</button>
+  <script>
+function dol() {
+    var suwak = document.getElementById("messages");
+    suwak.scrollTop = 99999999999;
+}
+  function wyslij() {
+	  try{
+	 if (Meteor.user().username=='null'){
+	 }
+	 else {
+    var message = $('#chat-message').val();
+    if (message=='\n'){
+		    $('#chat-message').val(null);
+		return 0;
+			}
+	else{
+    chatCollection.insert({
+      userId: 'ty',
+      message: message
+    });
+}
+  }
+}
+catch(TypeError){
+	alert("Aby pisać musisz się zalogować!");
+	$('#chat-message').val(null);
+	return 0;
+}
+    $('#chat-message').val(null);
+    
+    chatStream.emit('chat', message);
+  }
+  
+</script>
+<script>
+	
+function process(e) {
+    var code = (e.keyCode ? e.keyCode : e.which);
+    if (code == 13) { 
+wyslij();
+    }
+}
+</script>
+</template>
+
+<!-- Template for the individual chat message -->
+
+<template name='chatMessage'>
+
+	  <script>
+setInterval("dol();"); 
+</script>
+  <div> 
+    <b style=color:{{kolor}}>{{user}}:</b> {{message}}  
+  </div>
+</template>
+
