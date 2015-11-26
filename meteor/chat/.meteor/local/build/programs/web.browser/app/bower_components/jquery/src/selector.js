@@ -1,0 +1,3 @@
+(function(){define([ "./selector-sizzle" ]);
+
+})();
